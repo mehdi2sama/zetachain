@@ -2,7 +2,7 @@
 FROM node:16.14-alpine
 
 ENV SHELL /bin/ash
-ENV EXECUTE_PROGRAMMATICALLY=true
+ENV EXECUTE_PROGRAMMATICALLY=false
 
 RUN apk add --update python3 yarn git nodejs make g++
 
@@ -16,7 +16,7 @@ RUN yarn install ; exit 0
 COPY . ./
 RUN yarn install 
 
-RUN yarn add solc@0.5.10 solc@0.6.6 solc@0.7.6 solc@0.8.7
+RUN yarn add solc@0.5.10 solc@0.6.6 solc@0.7.6 solc@0.4.9
 
 RUN cd packages/zeta-app-contracts && npx hardhat compile && cd -
 RUN cd packages/zevm-app-contracts && npx hardhat compile && cd -
